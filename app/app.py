@@ -1,16 +1,21 @@
 import uuid
+
+from datetime import datetime
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
+
 from typing import Literal
-from datetime import datetime
+from typing_extensions import Annotated
+
+PositiveFloat = Annotated[float, Field(gt=0)]
 
 app = FastAPI()
 
 
 class TransactionInfo(BaseModel):
     transaction_date: datetime
-    liters_purchased: float
-    price: float
+    liters_purchased: PositiveFloat
+    price: PositiveFloat
     gas_type: Literal["DT", "92", "98", "100"]
 
 
