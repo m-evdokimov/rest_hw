@@ -5,7 +5,7 @@ from fastapi import FastAPI, HTTPException
 from schemes import GasStationTransaction, TransactionInfo, UpdateTransactionInfo
 
 
-app = FastAPI()
+app = FastAPI(title="Gas Station service")
 transactions_db: list[GasStationTransaction] = []
 
 
